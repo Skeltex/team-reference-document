@@ -1,0 +1,11 @@
+*.o
+*.h
+*.aux
+*.fls
+*.log
+*.out
+*.fdb_latexmk
+*.dvi
+*.pdf
+_minted
+.vscode

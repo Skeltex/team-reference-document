@@ -1,0 +1,140 @@
+\documentclass[10pt,twocolumn,oneside]{article}
+\usepackage{preamble}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead[L]{Saratov State University: Afanasyev, Mironov, Sinev}
+\fancyhead[R]{\thepage}
+
+\section{Шаблон}
+\inputminted[breaklines]{cpp}{Scripts/min_template.cpp}
+
+\section{Базовые алгоритмы}
+\subsection{Поиск двух максимумов}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/find_two_max.cpp}
+\subsection{Поиск суммы на отрезке}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/segment_sum.cpp}
+\subsection{Операция прибавления к отрезку}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/add_to_segment.cpp}
+\subsection{Бинарный поиск}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/binary_search.cpp}
+\subsection{Поиск первой 1 в неубывающей булевой функции}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/find_first_true.cpp}
+\subsection{Поиск последнего 0 в неубывающей булевой функции}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/find_last_false.cpp}
+\subsection{Тернарный поиск}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/ternary_search.cpp}
+\subsection{Алгоритм Мо}
+\inputminted[breaklines]{cpp}{Scripts/Basic algorithms/mo.cpp}
+
+\section{Теория чисел}
+\subsection{Факторизация}
+\inputminted[breaklines]{cpp}{Scripts/Number theory/factorization.cpp}
+\subsection{Решето Эратосфена}
+\inputminted[breaklines]{cpp}{Scripts/Number theory/sieve_of_erat.cpp}
+\subsection{Факторизация с использованием решета Эратосфена}
+\inputminted[breaklines]{cpp}{Scripts/Number theory/factorization_with_sieve.cpp}
+\subsection{Получение делителей из факторизации}
+\inputminted[breaklines]{cpp}{Scripts/Number theory/get_divs_from_factorization.cpp}
+\subsection{Получение делителей с помощью гармонического ряда}
+\inputminted[breaklines]{cpp}{Scripts/Number theory/get_divs_with_harmonic_series.cpp}
+\subsection{Функция Эйлера}
+\inputminted[breaklines]{cpp}{Scripts/Number theory/euler_phi.cpp}
+
+\section{Комбинаторика}
+\subsection{Массив обратных факториалов}
+\inputminted[breaklines]{cpp}{Scripts/Combinatorics/inverse_factorials.cpp}
+\subsection{Перебор перестановок длины $n$}
+\inputminted[breaklines]{cpp}{Scripts/Combinatorics/brute_permutations.cpp}
+
+\section{Теория графов}
+\subsection{DFS}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/dfs.cpp}
+\subsection{BFS}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/bfs.cpp}
+\subsection{Топологическая сортировка в ацикличном графе}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/top_sort.cpp}
+\subsection{Поиск мостов}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/bridges_search.cpp}
+\subsection{Поиск точек сочленения}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/cutpoints_search.cpp}
+\subsection{Алгоритм Дейкстры за $O(m\log{n})$}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/dijkstra.cpp}
+\subsection{Алгоритм Дейкстры за $O(n^2 + m)$}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/dijkstra2.cpp}
+\subsection{Алгоритм Беллмана-Форда $O(n \cdot m)$}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/bellman_ford.cpp}
+\subsection{Алгоритм Флойда–Уоршелла}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/floyd_warshall.cpp}
+\subsection{Алгоритм Диница (max flow)}
+\inputminted[breaklines]{cpp}{Scripts/Graph theory/dinic.cpp}
+
+\section{Динамика}
+\subsection{Поиск НВП динамикой вперёд}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/nvp_forward.cpp}
+\subsection{Поиск НВП динамикой назад}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/nvp_back.cpp}
+\subsection{Поиск НВП ленивой динамикой}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/nvp_lazy.cpp}
+\subsection{Поиск НВП + восстановление сертификата}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/nvp_certificate_recovery.cpp}
+\subsection{Поиск НВП за $O(n \cdot \max(a))$}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/nvp_fast.cpp}
+\subsection{Поиск НВП за $O(n\log{n})$}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/nvp_main.cpp}
+\subsection{Поиск НОП}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/nop.cpp}
+\subsection{Рюкзак}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/knapsack.cpp}
+\subsection{Рюкзак со стоимостями}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/knapsack_with_prices.cpp}
+\subsection{Разделяй и властвуй оптимизация}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/dnc_dp.cpp}
+\subsection{Оптимизация Кнута}
+\inputminted[breaklines]{cpp}{Scripts/Dynamics/knuth_optimization.cpp}
+
+\section{Строковые алгоритмы}
+\subsection{Z-функция}
+\inputminted[breaklines]{cpp}{Scripts/String algorithms/z_function.cpp}
+\subsection{Префикс-функция}
+\inputminted[breaklines]{cpp}{Scripts/String algorithms/prefix_function.cpp}
+\subsection{Алгоритм Манакера (палиндромы)}
+\inputminted[breaklines]{cpp}{Scripts/String algorithms/manacher.cpp}
+\subsection{Полиномиальное хэширование}
+\inputminted[breaklines]{cpp}{Scripts/String algorithms/rolling_hash.cpp}
+
+\section{Структуры данных}
+\subsection{DSU}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/dsu.cpp}
+\subsection{Бор}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/trie.cpp}
+\subsection{Дерево Фенвика}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/fenwick.cpp}
+\subsection{Дерево отрезков}
+\subsubsection{Прибавление на отрезке, сумма на отрезке}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/do1.cpp}
+\subsubsection{Прибавление в точке, сумма на отрезке}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/do2.cpp}
+\subsubsection{Спуск по ДО (поиск $k$-й единицы)}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/do3.cpp}
+\subsection{Дерево ЛиХао на минимум}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/lichao_tree_min.cpp}
+\subsection{LineContainer}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/line_container.cpp}
+\subsection{Массив с вставкой в позицию за $O(\sqrt{n})$}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/sqrt_insert.cpp}
+\subsection{Sparse table}
+\inputminted[breaklines]{cpp}{Scripts/Data structures/sparse_table.cpp}
+
+\section{VScode}
+\subsection{Int128}
+\inputminted[breaklines]{cpp}{Scripts/VScode/int128.cpp}
+\subsection{Bitset}
+\inputminted[breaklines]{cpp}{Scripts/VScode/bitset.cpp}
+
+
+\section{Формулы}
+\input{formulas.txt}
+
+\end{document}
