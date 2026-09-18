@@ -1,5 +1,4 @@
 #define _CRT_SECURE_NO_WARNINGS
-const int MOD = 998'244'353;
 #include <iostream>
 #include <algorithm>
 #include <cmath>
@@ -18,11 +17,16 @@ const int MOD = 998'244'353;
 #include <cstring>
 #include <fstream>
 #include <cassert>
+#include <chrono>
 
 using namespace std;
 mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
 
-#define see(x) cerr << (#x) << " = " << (x) << '\n';
+#ifdef _DEBUG
+#define see(x) cerr << (#x) << " = " << (x) << '\n'
+#else
+#define see(x) 42
+#endif
 #define sqr(a) ((a) * (a))
 #define divup(a, b) ((a) ? ((a) - 1) / (b) + 1 : 0)
 #define inc(a, b, c) ((a) <= (b) && (b) <= (c))
@@ -30,6 +34,7 @@ mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
 #define sz(a) ((int)(a).size())
 #define all(a) (a).begin(), (a).end()
 #define rall(a) (a).rbegin(), (a).rend()
+#define int long long
 
 typedef long long li;
 typedef long double ld;
@@ -41,10 +46,11 @@ typedef vector<li> vli;
 typedef vector<vli> vvli;
 typedef vector<ld> vld;
 
-const int INF = int(1e9) + 13;
-const li INF64 = li(2e18) + 13ll;
+const li MOD = 998'244'353;
+const li INF = li(2e18) + 13ll;
 const ld EPS = 1e-9l;
 const ld PI = acosl(-1.0l);
+const char nl = '\n';
 
 template<typename T> istream& operator >> (istream& in, vector<T>& v) {
     for (auto& x : v)
@@ -55,7 +61,7 @@ template<typename T> istream& operator >> (istream& in, vector<T>& v) {
 template <typename T> ostream& operator << (ostream& out, const vector<T>& v) {
     for (auto& x : v)
         out << x << ' ';
-    return out << '\n';
+    return out;
 }
 
 bool is_pow2(li x) {
@@ -74,7 +80,7 @@ string dec_to_bin(li x) {
     return s;
 }
 
-li bin_to_dec(string s) {
+li bin_to_dec(const string& s) {
     li x = 0;
     int n = sz(s);
     for (int i = n - 1; i >= 0; --i)
@@ -130,7 +136,7 @@ template<typename T>
 vi zip(const vector<T>& a) {
     vector<T> c = a;
     sort(all(c));
-    unique(all(c));
+    c.erase(unique(all(c)), c.end());
     vi b;
     for (auto& x : a)
         b.push_back(lower_bound(all(c), x) - c.begin());
@@ -151,7 +157,6 @@ string up(const string& s) {
     return s1;
 }
 
-//#define int long long
 //#define MULTITEST
 
 void solve() {
