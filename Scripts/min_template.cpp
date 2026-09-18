@@ -23,7 +23,6 @@ using namespace std;
 mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
 
 #define see(x) cerr << (#x) << " = " << (x) << '\n';
-#define forn(i, n) for (int i = 0; i < int(n); ++i)
 #define sqr(a) ((a) * (a))
 #define divup(a, b) ((a) ? ((a) - 1) / (b) + 1 : 0)
 #define inc(a, b, c) ((a) <= (b) && (b) <= (c))
@@ -59,20 +58,8 @@ template <typename T> ostream& operator << (ostream& out, const vector<T>& v) {
     return out << '\n';
 }
 
-bool is_int(ld x) {
-    return abs(x - li(x)) < EPS;
-}
-
-bool is_sqr(li x) {
-    return is_int(sqrtl(x));
-}
-
 bool is_pow2(li x) {
     return x && (x & -x) == x;
-}
-
-li mask(int i) {
-    return (1ll << i) - 1;
 }
 
 string dec_to_bin(li x) {
