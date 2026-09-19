@@ -6,8 +6,7 @@ for (li i = 2; i * i <= x; ++i) {
             x /= i;
             ++cnt;
         }
-        fact.push_back({ i, cnt });
+        fact.push_back({i, cnt});
     }
 }
-if (x > 1)
-    fact.push_back({ x, 1 });
+if (x > 1) fact.push_back({x, 1});

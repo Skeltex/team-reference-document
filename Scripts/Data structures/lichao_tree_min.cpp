@@ -4,7 +4,7 @@ struct func {
     int eval(int x) {
         return k * x + b;
     }
-    func(int k = 0, int b = 0) : k(k), b(b) {};
+    func(int k = 0, int b = 0) : k(k), b(b) {}
 };
 
 struct LiChaoTreeMin {
@@ -21,24 +21,20 @@ struct LiChaoTreeMin {
         int ans = t[v].eval(pos);
         if (l < r - 1) {
             int m = (l + r) / 2;
-            if (pos < m)
-                ans = min(ans, get(v * 2 + 1, l, m, pos));
-            else
-                ans = min(ans, get(v * 2 + 2, m, r, pos));
+            if (pos < m) ans = min(ans, get(v * 2 + 1, l, m, pos));
+            else ans = min(ans, get(v * 2 + 2, m, r, pos));
         }
         return ans;
     }
 
     void add(int v, int l, int r, func& f) {
-        if (l == r - 1)
-            return;
+        if (l == r - 1) return;
         int m = (l + r) / 2;
         if (t[v].eval(m) > f.eval(m)) // < для дерева на max
             swap(f, t[v]);
         if (f.eval(l) < t[v].eval(l)) // > для дерева на max
             add(v * 2 + 1, l, m, f);
-        else
-            add(v * 2 + 2, m, r, f);
+        else add(v * 2 + 2, m, r, f);
     }
 
     int getMin(int x) {

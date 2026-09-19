@@ -1,5 +1,5 @@
 void get_divs(const vector<pii>& f, int d = 1, int i = 0) {
-    if (i == sz(f))) {
+    if (i == sz(f)) {
         cout << d << '\n';
         return;
     }

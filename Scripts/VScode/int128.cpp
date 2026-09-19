@@ -1,5 +1,6 @@
 istream& operator>>(istream& in, __int128& a) {
-    string s; in >> s;
+    string s;
+    in >> s;
     a = 0;
     if (s == "0") return in;
     for (short i = (s[0] == '-'); i < s.size(); ++i)
@@ -10,8 +11,7 @@ istream& operator>>(istream& in, __int128& a) {
 
 ostream& operator<<(ostream& out, __int128 a) {
     __int128 b = a;
-    if (b < 0)
-        out << '-', b *= -1;
+    if (b < 0) out << '-', b *= -1;
     string s;
     do {
         s.push_back(b % 10 + '0');

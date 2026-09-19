@@ -5,16 +5,14 @@ vi ord;
 void dfs(int v) {
     used[v] = true;
     for (int u : g[v])
-        if (!used[u])
-            dfs(u);
+        if (!used[u]) dfs(u);
     ord.push_back(v);
 }
 
 void solve() {
     // Ввод графа
     for (int i = 0; i < n; ++i)
-        if (!used[i])
-            dfs(i);
+        if (!used[i]) dfs(i);
     reverse(all(ord));
 
     vi pos(n);

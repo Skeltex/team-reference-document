@@ -38,7 +38,7 @@ struct network {
             if (u == t) break;
             for (auto i : g[u]) {
                 int v = edges[i].v;
-                if (dif(i) < m or d[v] != INF) continue;
+                if (dif(i) < m || d[v] != INF) continue;
                 d[v] = d[u] + 1;
                 q.push(v);
             }
@@ -47,12 +47,12 @@ struct network {
     }
 
     int dfs(int x, int mx, int m) {
-        if (x == t or mx == 0) return mx;
+        if (x == t || mx == 0) return mx;
         int sm = 0;
         for (; lx[x] < g[x].size(); ++lx[x]) {
             int i = g[x][lx[x]];
             int v = edges[i].v;
-            if (dif(i) < m or d[v] != d[x] + 1) continue;
+            if (dif(i) < m || d[v] != d[x] + 1) continue;
             int push = dfs(v, min(mx - sm, dif(i)), m);
             edges[i].f += push;
             edges[i ^ 1].f -= push;
@@ -63,7 +63,7 @@ struct network {
     }
 
     int maxflow() {
-        int flow = 0, m = (1ll << 30);
+        int flow = 0, m = (1LL << 30);
         while (m > 0) {
             while (bfs(m)) {
                 lx = vi(n, 0);

@@ -4,14 +4,14 @@ struct func {
     int eval(int x) {
         return k * x + b;
     }
-    func(int k = 0, int b = 0) : k(k), b(b) {};
+    func(int k = 0, int b = 0) : k(k), b(b) {}
 };
 
 struct line {
     func f;
     ld l;
 
-    line(func f, ld l = 0.0l) : f(f), l(l) {};
+    line(func f, ld l = 0.0L) : f(f), l(l) {}
 };
 
 ld getX(const func& f1, const func& f2) {
@@ -25,10 +25,8 @@ struct LineContainer {
     void addRight(const func& f) {
         while (!d.empty()) {
             ld newX = getX(f, d.back().f);
-            if (newX <= d.back().l)
-                d.pop_back();
-            else
-                break;
+            if (newX <= d.back().l) d.pop_back();
+            else break;
         }
         ld newX = (d.empty() ? -INF64 : getX(f, d.back().f));
         d.push_back(line(f, newX));
@@ -39,10 +37,8 @@ struct LineContainer {
         while (!d.empty()) {
             ld newX = getX(f, d.front().f);
             ld r = (sz(d) > 1 ? d[1].l : INF64);
-            if (newX >= r)
-                d.pop_front();
-            else
-                break;
+            if (newX >= r) d.pop_front();
+            else break;
         }
         if (!d.empty()) {
             ld newX = getX(f, d.front().f);
@@ -52,8 +48,7 @@ struct LineContainer {
     }
 
     int getMin(int x) {
-        if (d.empty())
-            return INF64;
+        if (d.empty()) return INF64;
         int res = 0;
         int l = 1, r = sz(d) - 1;
         while (l <= r) {
@@ -61,17 +56,14 @@ struct LineContainer {
             if (d[m].l <= x) {
                 res = m;
                 l = m + 1;
-            }
-            else
-                r = m - 1;
+            } else r = m - 1;
         }
         return d[res].f.eval(x);
     }
 
     int getMin1(int x) {
         // x подаются в порядке неубывания
-        if (d.empty())
-            return INF64;
+        if (d.empty()) return INF64;
         while (d.size() > 1 && d[1].l <= x) {
             d.pop_front();
             d.front().l = -INF64;
@@ -81,14 +73,13 @@ struct LineContainer {
 
     int getMin2(int x) {
         // x подаются в порядке невозрастания
-        if (d.empty())
-            return INF64;
+        if (d.empty()) return INF64;
         while (d.back().l > x)
             d.pop_back();
         return d.back().f.eval(x);
     }
 
-    LineContainer() {};
+    LineContainer() {}
 };
 
 void solve() {

@@ -13,9 +13,11 @@ bool cmp(int i, int j) {
 
 void solve() {
     unordered_map<int, int> cnt;
-    int n, q; cin >> n >> q;
+    int n, q;
+    cin >> n >> q;
     vector<int> a(n);
-    for (auto& i : a) cin >> i;
+    for (auto& i : a)
+        cin >> i;
     vector<int> zp(q);
     for (int i = 0; i < q; ++i) {
         cin >> lg[i] >> rg[i];
@@ -49,5 +51,6 @@ void solve() {
         }
         ans[i] = cur;
     }
-    for (auto i : ans) cout << i << '\n';
+    for (auto i : ans)
+        cout << i << '\n';
 }

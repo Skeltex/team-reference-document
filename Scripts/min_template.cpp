@@ -47,18 +47,20 @@ typedef vector<vli> vvli;
 typedef vector<ld> vld;
 
 const li MOD = 998'244'353;
-const li INF = li(2e18) + 13ll;
-const ld EPS = 1e-9l;
-const ld PI = acosl(-1.0l);
+const li INF = li(2e18) + 13LL;
+const ld EPS = 1e-9L;
+const ld PI = acosl(-1.0L);
 const char nl = '\n';
 
-template<typename T> istream& operator >> (istream& in, vector<T>& v) {
+template <typename T>
+istream& operator>>(istream& in, vector<T>& v) {
     for (auto& x : v)
         in >> x;
     return in;
 }
 
-template <typename T> ostream& operator << (ostream& out, const vector<T>& v) {
+template <typename T>
+ostream& operator<<(ostream& out, const vector<T>& v) {
     for (auto& x : v)
         out << x << ' ';
     return out;
@@ -69,8 +71,7 @@ bool is_pow2(li x) {
 }
 
 string dec_to_bin(li x) {
-    if (!x)
-        return "0";
+    if (!x) return "0";
     string s;
     while (x) {
         s += (x & 1) + '0';
@@ -84,7 +85,7 @@ li bin_to_dec(const string& s) {
     li x = 0;
     int n = sz(s);
     for (int i = n - 1; i >= 0; --i)
-        x += (s[i] - '0') * (1ll << (n - 1 - i));
+        x += (s[i] - '0') * (1LL << (n - 1 - i));
     return x;
 }
 
@@ -104,8 +105,7 @@ li mul(li a, li b) {
 li binpow(li a, li b) {
     li res = 1;
     while (b) {
-        if (b & 1)
-            res = mul(res, a);
+        if (b & 1) res = mul(res, a);
         a = mul(a, a);
         b >>= 1;
     }
@@ -116,7 +116,7 @@ li inv(li x) {
     return binpow(x, MOD - 2);
 }
 
-template<typename T>
+template <typename T>
 li gcd(const vector<T>& a) {
     li gcd1 = 0;
     for (auto x : a)
@@ -124,7 +124,7 @@ li gcd(const vector<T>& a) {
     return gcd1;
 }
 
-template<typename T>
+template <typename T>
 li lcm(const vector<T>& a) {
     li lcm1 = 1;
     for (auto x : a)
@@ -132,7 +132,7 @@ li lcm(const vector<T>& a) {
     return lcm1;
 }
 
-template<typename T>
+template <typename T>
 vi zip(const vector<T>& a) {
     vector<T> c = a;
     sort(all(c));
@@ -159,9 +159,7 @@ string up(const string& s) {
 
 //#define MULTITEST
 
-void solve() {
-    
-}
+void solve() {}
 
 signed main() {
 #ifdef _DEBUG

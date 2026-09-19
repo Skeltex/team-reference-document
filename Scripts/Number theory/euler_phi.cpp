@@ -7,7 +7,6 @@ int euler(int n) {
             res -= res / p;
         }
     }
-    if (n > 1)
-        res -= res / n;
+    if (n > 1) res -= res / n;
     return res;
 }

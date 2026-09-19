@@ -1,10 +1,12 @@
-const int sz = 6250001;
+const int sz = 6'250'001;
 
 void solve() {
     vi pr(sz);
-    int n, w; cin >> n >> w;
+    int n, w;
+    cin >> n >> w;
     vi a(n);
-    for (int i = 0; i < n; ++i) cin >> a[i];
+    for (int i = 0; i < n; ++i)
+        cin >> a[i];
     bitset<sz> bt, dif;
     bt[0] = 1;
     for (int i = 0; i < n; ++i) {
@@ -29,5 +31,6 @@ void solve() {
         cur = pr[curs];
     }
     cout << sz(ans) << nl;
-    for (int i = sz(ans) - 1; i >= 0; --i) cout << ans[i] << ' ';
+    for (int i = sz(ans) - 1; i >= 0; --i)
+        cout << ans[i] << ' ';
 }

@@ -10,12 +10,9 @@ void dfs(int v, int p = -1) {
             if (!used[u]) {
                 d[u] = d[v] + 1;
                 dfs(u, v);
-                if (up[u] > d[v])
-                    cout << "! " << v + 1 << ' ' << u + 1 << '\n';
+                if (up[u] > d[v]) cout << "! " << v + 1 << ' ' << u + 1 << '\n';
                 up[v] = min(up[v], up[u]);
-            }
-            else
-                up[v] = min(up[v], d[u]);
+            } else up[v] = min(up[v], d[u]);
         }
     }
 }

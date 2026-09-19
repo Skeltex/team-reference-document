@@ -20,8 +20,7 @@ void add_string(trie r, const string& s, int val = 1) {
     for (char _c : s) {
         int c = _c - 'a';
         r->cnt += val;
-        if (!r->to[c])
-            r->to[c] = new_node();
+        if (!r->to[c]) r->to[c] = new_node();
         r = r->to[c];
     }
     r->cntEnd += val;
@@ -31,8 +30,7 @@ void add_string(trie r, const string& s, int val = 1) {
 trie find(trie r, const string& s) {
     for (char _c : s) {
         int c = _c - 'a';
-        if (!r->to[c])
-            return nullptr;
+        if (!r->to[c]) return nullptr;
         r = r->to[c];
     }
     return r;

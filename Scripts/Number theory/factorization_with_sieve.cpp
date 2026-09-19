@@ -20,7 +20,7 @@ auto fact = [&](int x) {
             ++cnt;
             x /= p;
         }
-        f.push_back({ p, cnt });
+        f.push_back({p, cnt});
     }
     return f;
-    };
+};

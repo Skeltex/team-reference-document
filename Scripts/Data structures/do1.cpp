@@ -24,12 +24,12 @@ void build(int x, int lx, int rx) {
 
 void add(int l, int r, int val, int x, int lx, int rx) {
     push(x, lx, rx);
-    if (lx >= l and rx <= r) {
+    if (lx >= l && rx <= r) {
         p[x] += val;
         push(x, lx, rx);
         return;
     }
-    if (lx >= r or rx <= l) return;
+    if (lx >= r || rx <= l) return;
     int mid = (lx + rx) / 2;
     add(l, r, val, 2 * x + 1, lx, mid);
     add(l, r, val, 2 * x + 2, mid, rx);
@@ -38,8 +38,8 @@ void add(int l, int r, int val, int x, int lx, int rx) {
 
 int get(int l, int r, int x, int lx, int rx) {
     push(x, lx, rx);
-    if (lx >= l and rx <= r) return tree[x];
-    if (lx >= r or rx <= l) return 0;
+    if (lx >= l && rx <= r) return tree[x];
+    if (lx >= r || rx <= l) return 0;
     int mid = (lx + rx) / 2;
     return get(l, r, 2 * x + 1, lx, mid) + get(l, r, 2 * x + 2, mid, rx);
 }

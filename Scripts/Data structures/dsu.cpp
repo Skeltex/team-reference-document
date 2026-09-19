@@ -1,10 +1,9 @@
 struct DSU {
     vi s; // Эвристика размера
     vi p;
-    
+
     int get(int x) {
-        if (p[x] == x)
-            return x;
+        if (p[x] == x) return x;
         //return get(p[x]); // Без эвристики сжатия пути
         return p[x] = get(p[x]); // Эвристика сжатия пути
     }
@@ -12,12 +11,10 @@ struct DSU {
     bool merge(int x, int y) {
         x = get(x);
         y = get(y);
-        if (x == y)
-            return false;
+        if (x == y) return false;
 
         // Эвристика размера
-        if (s[x] > s[y])
-            swap(x, y);
+        if (s[x] > s[y]) swap(x, y);
         s[y] += s[x];
         //
 

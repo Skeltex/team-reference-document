@@ -3,13 +3,7 @@
 #include <ext/pb_ds/hash_policy.hpp>
 using namespace __gnu_pbds;
 
-typedef tree<
-    int,
-    null_type,
-    less<int>,
-    rb_tree_tag,
-    tree_order_statistics_node_update
-> ordered_set;
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 ordered_set s;
 auto it = s.find_by_order(0);
@@ -17,27 +11,20 @@ int x = *it;
 
 s.order_of_key(3);
 
-
-typedef tree<
-    pair<int, int>,
-    null_type,
-    less<pair<int, int>>,
-    rb_tree_tag,
-    tree_order_statistics_node_update
-> ordered_multiset;
+typedef tree<pair<int, int>, null_type, less<pair<int, int>>, rb_tree_tag,
+    tree_order_statistics_node_update>
+    ordered_multiset;
 
 ordered_multiset s;
 int s_id = 0;
 s.insert({3, ++s_id});
 
 auto it = ms.lower_bound({5, -INF});
-if (it != ms.end() && it->first == 5)
-    ms.erase(it);
+if (it != ms.end() && it->first == 5) ms.erase(it);
 
 auto first = ms.lower_bound({5, -INF});
 auto last = ms.upper_bound({5, INF});
 ms.erase(first, last);
-
 
 typedef gp_hash_table<int, null_type, custom_hash> fast_unordered_set;
 

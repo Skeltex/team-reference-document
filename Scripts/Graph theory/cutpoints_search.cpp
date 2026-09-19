@@ -12,19 +12,14 @@ void dfs(int v, int p = -1) {
             if (!used[u]) {
                 d[u] = d[v] + 1;
                 dfs(u, v);
-                if (up[u] >= d[v] && p != -1)
-                    is_cutpoint = true;
+                if (up[u] >= d[v] && p != -1) is_cutpoint = true;
                 up[v] = min(up[v], up[u]);
                 ++cnt;
-            }
-            else
-                up[v] = min(up[v], d[u]);
+            } else up[v] = min(up[v], d[u]);
         }
     }
-    if (p == -1 && cnt > 1)
-        is_cutpoint = true;
-    if (is_cutpoint)
-        cout << v + 1 << '\n';
+    if (p == -1 && cnt > 1) is_cutpoint = true;
+    if (is_cutpoint) cout << v + 1 << '\n';
 }
 
 void solve() {

@@ -2,8 +2,7 @@ const int N = 300'013;
 int fact[N], rfact[N];
 
 int cnk(int n, int k) {
-    if (k < 0 || n < k || n < 0)
-        return 0ll;
+    if (k < 0 || n < k || n < 0) return 0LL;
     return mul(fact[n], mul(rfact[k], rfact[n - k]));
 }
 

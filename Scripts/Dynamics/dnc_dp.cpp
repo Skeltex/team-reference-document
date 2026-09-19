@@ -1,16 +1,20 @@
 int n, k;
-int dp[100013][22];
-int a[100013];
-int cnt[100013];
+int dp[100'013][22];
+int a[100'013];
+int cnt[100'013];
 int sm = 0, lg = 1, rg = 1;
 
 //recalc for CD 868F
 
 void calc(int l, int r) {
-    while (rg < r) sm += cnt[a[rg++]]++;
-    while (lg > l) sm += cnt[a[--lg]]++;
-    while (rg > r) sm -= --cnt[a[--rg]];
-    while (lg < l) sm -= --cnt[a[lg++]];
+    while (rg < r)
+        sm += cnt[a[rg++]]++;
+    while (lg > l)
+        sm += cnt[a[--lg]]++;
+    while (rg > r)
+        sm -= --cnt[a[--rg]];
+    while (lg < l)
+        sm -= --cnt[a[lg++]];
 }
 
 void rec(int l, int r, int opt_l, int opt_r, int j) {
@@ -31,10 +35,12 @@ void rec(int l, int r, int opt_l, int opt_r, int j) {
 void solve() {
     cin >> n >> k;
     for (int i = 0; i <= n; ++i) {
-        for (int j = 0; j <= k; ++j) dp[i][j] = INF;
+        for (int j = 0; j <= k; ++j)
+            dp[i][j] = INF;
     }
     dp[0][0] = 0;
-    for (int i = 0; i < n; ++i) cin >> a[i + 1];
+    for (int i = 0; i < n; ++i)
+        cin >> a[i + 1];
     for (int i = 0; i < k; ++i) {
         rec(1, n, 1, n, i + 1);
     }

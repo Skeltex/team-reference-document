@@ -24,8 +24,7 @@ int makeInner(int lf, int rg) {
 }
 
 int build(const vector<int>& a, int l, int r) {
-    if (r - l == 1)
-        return makeLeaf(a[l]);
+    if (r - l == 1) return makeLeaf(a[l]);
     int m = (l + r) / 2;
     int lf = build(a, l, m);
     int rg = build(a, m, r);
@@ -49,15 +48,12 @@ li get_sum(int L, int R, int v = sz(roots) - 1) {
 }
 
 int update(int v, int l, int r, int pos, int val) {
-    if (r - l == 1)
-        return makeLeaf(val);
+    if (r - l == 1) return makeLeaf(val);
     int m = (l + r) / 2;
     int lf = buf[v].leftSon;
     int rg = buf[v].rightSon;
-    if (pos < m)
-        lf = update(lf, l, m, pos, val);
-    else
-        rg = update(rg, m, r, pos, val);
+    if (pos < m) lf = update(lf, l, m, pos, val);
+    else rg = update(rg, m, r, pos, val);
     return makeInner(lf, rg);
 }
 
