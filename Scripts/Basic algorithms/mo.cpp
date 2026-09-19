@@ -17,9 +17,9 @@ void solve() {
     vector<int> a(n);
     for (auto& i : a) cin >> i;
     vector<int> zp(q);
-    for (int i = 0; i < q; i++) {
+    for (int i = 0; i < q; ++i) {
         cin >> lg[i] >> rg[i];
-        lg[i]--;
+        --lg[i];
         block[i] = lg[i] / M;
         zp[i] = i;
     }
@@ -28,24 +28,24 @@ void solve() {
     vector<int> ans(q);
     for (auto i : zp) {
         while (l > lg[i]) {
-            l--;
-            if (++cnt[a[l]] == a[l]) cur++;
-            else if (cnt[a[l]] == a[l] + 1) cur--;
+            --l;
+            if (++cnt[a[l]] == a[l]) ++cur;
+            else if (cnt[a[l]] == a[l] + 1) --cur;
         }
         while (r < rg[i]) {
-            if (++cnt[a[r]] == a[r]) cur++;
-            else if (cnt[a[r]] == a[r] + 1) cur--;
-            r++;
+            if (++cnt[a[r]] == a[r]) ++cur;
+            else if (cnt[a[r]] == a[r] + 1) --cur;
+            ++r;
         }
         while (l < lg[i]) {
-            if (cnt[a[l]]-- == a[l]) cur--;
-            else if (cnt[a[l]] == a[l]) cur++;
-            l++;
+            if (cnt[a[l]]-- == a[l]) --cur;
+            else if (cnt[a[l]] == a[l]) ++cur;
+            ++l;
         }
         while (r > rg[i]) {
-            r--;
-            if (cnt[a[r]]-- == a[r]) cur--;
-            else if (cnt[a[r]] == a[r]) cur++;
+            --r;
+            if (cnt[a[r]]-- == a[r]) --cur;
+            else if (cnt[a[r]] == a[r]) ++cur;
         }
         ans[i] = cur;
     }

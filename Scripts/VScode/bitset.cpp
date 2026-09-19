@@ -4,10 +4,10 @@ void solve() {
     vi pr(sz);
     int n, w; cin >> n >> w;
     vi a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; ++i) cin >> a[i];
     bitset<sz> bt, dif;
     bt[0] = 1;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         dif = bt ^ (bt | bt << a[i]);
         bt |= bt << a[i];
         int ch = dif._Find_first();
@@ -29,5 +29,5 @@ void solve() {
         cur = pr[curs];
     }
     cout << sz(ans) << nl;
-    for (int i = sz(ans) - 1; i >= 0; i--) cout << ans[i] << ' ';
+    for (int i = sz(ans) - 1; i >= 0; --i) cout << ans[i] << ' ';
 }
