@@ -1,12 +1,12 @@
-int find_extremum(int l, int r) {
-    while (l < r) {
-        int m = l + (r - l) / 2;
+ld find_extremum(ld l, ld r) {
+    for (int i = 0; i < 200; ++i) {
+        ld m1 = l + (r - l) / 3, m2 = r - (r - l) / 3;
         // <= левая граница минимума
         // < правая граница минимума
         // >= левая граница максимума
         // > правая граница максимума
-        if (f(m) <= f(m + 1)) r = m;
-        else l = m + 1;
+        if (f(m1) <= f(m2)) r = m2;
+        else l = m1;
     }
-    return l;
+    return l + (r - l) / 2;
 }
