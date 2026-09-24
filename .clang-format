@@ -1,0 +1,43 @@
+# clang-format 22 or newer.
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++17
+IndentWidth: 4
+ContinuationIndentWidth: 4
+AlignAfterOpenBracket: false
+AlignOperands: DontAlign
+BreakBeforeBinaryOperators: NonAssignment
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+LineEnding: LF
+InsertNewlineAtEOF: true
+
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+BreakTemplateDeclarations: Yes
+SpaceAfterTemplateKeyword: true
+SpaceAfterOperatorKeyword: false
+Cpp11BracedListStyle: FunctionCall
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+
+IntegerLiteralSeparator:
+  Decimal: 3
+  DecimalMinDigitsInsert: 4
+NumericLiteralCase:
+  Suffix: Upper
+RemoveSemicolon: true
+
+SortIncludes:
+  Enabled: false
+SortUsingDeclarations: Never
+ReflowComments: Never
+AlignTrailingComments:
+  Kind: Never
+AlignEscapedNewlines: DontAlign
+MaxEmptyLinesToKeep: 1
