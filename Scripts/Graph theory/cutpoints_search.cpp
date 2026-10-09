@@ -24,8 +24,9 @@ void dfs(int v, int p = -1) {
 
 void solve() {
     // Ввод графа
-    d.resize(n);
+    used.assign(n, false);
+    d.assign(n, 0);
     up.resize(n);
-    d[0] = 0;
-    dfs(0);
+    for (int v = 0; v < n; ++v)
+        if (!used[v]) dfs(v);
 }

@@ -1,3 +1,4 @@
+// Алфавит: 'a'..'z'.
 const int N = 2'300'000, A = 26;
 
 struct node {

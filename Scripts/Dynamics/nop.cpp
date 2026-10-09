@@ -1,4 +1,4 @@
-vvi dp(n + 1, vi(m + 1, -INF));
+vvi dp(n + 1, vi(m + 1, 0));
 dp[0][0] = 0;
 
 for (int i = 0; i <= n; ++i) {

@@ -12,7 +12,7 @@ for (li i = 2; i * i <= n; ++i) {
 }
 
 auto fact = [&](int x) {
-    vector<pii> f;
+    vector<pair<li, li>> f;
     while (x > 1) {
         int p = prdiv[x];
         int cnt = 0;

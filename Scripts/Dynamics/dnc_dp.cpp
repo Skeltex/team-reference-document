@@ -1,10 +1,12 @@
 int n, k;
-int dp[100'013][22];
+li dp[100'013][22];
 int a[100'013];
 int cnt[100'013];
-int sm = 0, lg = 1, rg = 1;
+li sm = 0;
+int lg = 1, rg = 1;
 
-//recalc for CD 868F
+// Стоимость из CF 868F: число пар равных элементов на отрезке.
+// n <= 100'000, 1 <= k <= min(n, 20), 0 <= a[i] <= 100'000; opt монотонен по позиции.
 
 void calc(int l, int r) {
     while (rg < r)
@@ -34,6 +36,9 @@ void rec(int l, int r, int opt_l, int opt_r, int j) {
 
 void solve() {
     cin >> n >> k;
+    fill(cnt, cnt + 100'013, 0);
+    sm = 0;
+    lg = rg = 1;
     for (int i = 0; i <= n; ++i) {
         for (int j = 0; j <= k; ++j)
             dp[i][j] = INF;

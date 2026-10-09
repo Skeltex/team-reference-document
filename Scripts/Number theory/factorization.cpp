@@ -1,4 +1,4 @@
-vector<pii> fact;
+vector<pair<li, li>> fact;
 for (li i = 2; i * i <= x; ++i) {
     if (x % i == 0) {
         int cnt = 0;

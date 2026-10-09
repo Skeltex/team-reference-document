@@ -15,28 +15,36 @@ struct line {
 };
 
 ld getX(const func& f1, const func& f2) {
-    return (f2.b - f1.b) / (f1.k - f2.k);
+    return ld(f2.b - f1.b) / (f1.k - f2.k);
 }
 
 struct LineContainer {
     deque<line> d;
 
-    // Вызываем, если по убыванию k
+    // Вызываем, если по невозрастанию k
     void addRight(const func& f) {
+        if (!d.empty() && d.back().f.k == f.k) {
+            if (d.back().f.b <= f.b) return;
+            d.pop_back();
+        }
         while (!d.empty()) {
             ld newX = getX(f, d.back().f);
             if (newX <= d.back().l) d.pop_back();
             else break;
         }
-        ld newX = (d.empty() ? -INF64 : getX(f, d.back().f));
+        ld newX = (d.empty() ? -INF : getX(f, d.back().f));
         d.push_back(line(f, newX));
     }
 
-    // Вызываем, если по возрастанию k
+    // Вызываем, если по неубыванию k
     void addLeft(const func& f) {
+        if (!d.empty() && d.front().f.k == f.k) {
+            if (d.front().f.b <= f.b) return;
+            d.pop_front();
+        }
         while (!d.empty()) {
             ld newX = getX(f, d.front().f);
-            ld r = (sz(d) > 1 ? d[1].l : INF64);
+            ld r = (sz(d) > 1 ? d[1].l : INF);
             if (newX >= r) d.pop_front();
             else break;
         }
@@ -44,11 +52,11 @@ struct LineContainer {
             ld newX = getX(f, d.front().f);
             d.front().l = newX;
         }
-        d.push_front(line(f, -INF64));
+        d.push_front(line(f, -INF));
     }
 
     int getMin(int x) {
-        if (d.empty()) return INF64;
+        if (d.empty()) return INF;
         int res = 0;
         int l = 1, r = sz(d) - 1;
         while (l <= r) {
@@ -63,18 +71,18 @@ struct LineContainer {
 
     int getMin1(int x) {
         // x подаются в порядке неубывания
-        if (d.empty()) return INF64;
+        if (d.empty()) return INF;
         while (d.size() > 1 && d[1].l <= x) {
             d.pop_front();
-            d.front().l = -INF64;
+            d.front().l = -INF;
         }
         return d.front().f.eval(x);
     }
 
     int getMin2(int x) {
         // x подаются в порядке невозрастания
-        if (d.empty()) return INF64;
-        while (d.back().l > x)
+        if (d.empty()) return INF;
+        while (d.size() > 1 && d.back().l > x)
             d.pop_back();
         return d.back().f.eval(x);
     }
@@ -85,7 +93,7 @@ struct LineContainer {
 void solve() {
     int n;
     cin >> n;
-    vli a(n), b(n), dp(n, INF64);
+    vli a(n), b(n), dp(n, INF);
     cin >> a >> b;
 
     dp[0] = 0;

@@ -8,5 +8,6 @@ int calc(int i, const vi& a, vi& dp) {
 }
 
 vi dp(n, -1);
-calc(n - 1, a, dp);
+for (int i = 0; i < n; ++i)
+    calc(i, a, dp);
 cout << *max_element(all(dp)) << '\n';

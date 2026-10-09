@@ -1,5 +1,5 @@
 int s = 3;
-vli d(n, INF64);
+vli d(n, INF);
 d[s] = 0;
 vc used(n);
 for (int i = 0; i < n; ++i) {
@@ -8,7 +8,7 @@ for (int i = 0; i < n; ++i) {
         if (!used[u])
             if (v == -1 || d[v] > d[u]) v = u;
     }
-    if (d[v] == INF64) break;
+    if (d[v] == INF) break;
     used[v] = true;
     for (auto [u, w] : g[v])
         d[u] = min(d[u], d[v] + w);

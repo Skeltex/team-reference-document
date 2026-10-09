@@ -3,7 +3,7 @@ pr[0] = a[0];
 for (int i = 1; i < n; ++i)
     pr[i] = a[i] - a[i - 1];
 
-auto add = [&pr, n](int l, int r, int x) {
+auto add = [&pr, n](int l, int r, li x) {
     if (l > n - 1 || r < 0 || l > r) return;
     pr[max(l, 0LL)] += x;
     if (r < n - 1) pr[r + 1] -= x;

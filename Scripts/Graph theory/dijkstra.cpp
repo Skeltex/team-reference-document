@@ -1,5 +1,5 @@
 int s = 3;
-vli d(n, INF64);
+vli d(n, INF);
 d[s] = 0;
 priority_queue<pair<li, int>, vector<pair<li, int>>, greater<pair<li, int>>> q;
 q.push({d[s], s});

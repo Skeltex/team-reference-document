@@ -1,10 +1,10 @@
-bool update(int& x, int y) {
+bool update(li& x, li y) {
     if (x >= y) return false;
     x = y;
     return true;
 }
 
-vvi dp(n + 1, vi(W + 1, -INF));
+vvli dp(n + 1, vli(W + 1, -INF));
 dp[0][0] = 0;
 
 for (int i = 0; i < n; ++i) {

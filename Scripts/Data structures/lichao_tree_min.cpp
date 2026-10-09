@@ -13,8 +13,8 @@ struct LiChaoTreeMin {
 
     LiChaoTreeMin(int n = 0) {
         this->n = n;
-        t.resize(4 * n, func(0, INF64));
-        // -INF64 для дерева на max
+        t.resize(4 * n, func(0, INF));
+        // -INF для дерева на max
     }
 
     int get(int v, int l, int r, int pos) {
@@ -28,10 +28,10 @@ struct LiChaoTreeMin {
     }
 
     void add(int v, int l, int r, func& f) {
-        if (l == r - 1) return;
         int m = (l + r) / 2;
         if (t[v].eval(m) > f.eval(m)) // < для дерева на max
             swap(f, t[v]);
+        if (l == r - 1) return;
         if (f.eval(l) < t[v].eval(l)) // > для дерева на max
             add(v * 2 + 1, l, m, f);
         else add(v * 2 + 2, m, r, f);

@@ -99,10 +99,12 @@ li sub(li a, li b) {
 }
 
 li mul(li a, li b) {
-    return a * b % MOD;
+    li res = a % MOD * (b % MOD) % MOD;
+    return res >= 0 ? res : res + MOD;
 }
 
 li binpow(li a, li b) {
+    a = add(a, 0);
     li res = 1;
     while (b) {
         if (b & 1) res = mul(res, a);

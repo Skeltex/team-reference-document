@@ -1,3 +1,4 @@
+// Разместить до шаблонных операторов ввода/вывода vector из min_template.
 istream& operator>>(istream& in, __int128& a) {
     string s;
     in >> s;

@@ -1,6 +1,6 @@
-int find_extremum(int l, int r) {
+li find_extremum(li l, li r) {
     while (l < r) {
-        int m = l + (r - l) / 2;
+        li m = l + (r - l) / 2;
         // <= левая граница минимума
         // < правая граница минимума
         // >= левая граница максимума
