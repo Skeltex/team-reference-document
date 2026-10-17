@@ -1,0 +1,117 @@
+\begingroup
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlength{\abovedisplayskip}{5pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{5pt plus 1pt minus 1pt}
+\setlength{\abovedisplayshortskip}{3pt plus 1pt}
+\setlength{\belowdisplayshortskip}{5pt plus 1pt minus 1pt}
+
+\subsection{Суммы последовательностей}
+Сумма геометрической прогрессии:
+\[
+  S_n = \begin{cases}
+    \dfrac{b_1(1 - q^n)}{1 - q}, & q \ne 1, \\
+    nb_1, & q = 1.
+  \end{cases}
+\]
+Сумма бесконечной геометрической прогрессии:
+\[
+  S = \frac{b_1}{1 - q}, \qquad |q| < 1.
+\]
+Сумма арифметической прогрессии:
+\[
+  \begin{aligned}
+    S_n &= \frac{a_1 + a_n}{2} \cdot n \\
+        &= \frac{2a_1 + d(n - 1)}{2} \cdot n.
+  \end{aligned}
+\]
+\[
+  \begin{aligned}
+    1^2 + 2^2 + \dots + n^2 &= \frac{n(n + 1)(2n + 1)}{6}, \\
+    1^3 + 2^3 + \dots + n^3 &= \frac{n^2(n + 1)^2}{4}.
+  \end{aligned}
+\]
+
+\subsection{Вычисления}
+Площадь криволинейного сектора:
+\[
+  \mu(F) = \frac{1}{2} \int_{\alpha}^{\beta} r^2(\varphi)\,d\varphi.
+\]
+Интегралы (при $a > 0$, на интервалах, где выражения определены):
+\[
+  \begin{aligned}
+    \int \sqrt{a^2 - x^2}\,dx
+      &= \frac{x}{2}\sqrt{a^2 - x^2} \\
+      &\quad + \frac{a^2}{2}\arcsin\frac{x}{a} + C.
+  \end{aligned}
+\]
+\[
+  \begin{aligned}
+    \int \sqrt{x^2 \pm a^2}\,dx
+      &= \frac{x}{2}\sqrt{x^2 \pm a^2} \\
+      &\quad \pm \frac{a^2}{2}\ln\left|x + \sqrt{x^2 \pm a^2}\right| + C.
+  \end{aligned}
+\]
+\[
+  \int \frac{dx}{a^2 + x^2}
+    = \frac{1}{a}\operatorname{arctg}\frac{x}{a} + C.
+\]
+\[
+  \int \frac{dx}{a^2 - x^2}
+    = \frac{1}{2a}\ln\left|\frac{a + x}{a - x}\right| + C.
+\]
+\[
+  \int \frac{x\,dx}{a^2 \pm x^2}
+    = \pm\frac{1}{2}\ln|a^2 \pm x^2| + C.
+\]
+\[
+  \int \frac{dx}{\sqrt{a^2 - x^2}}
+    = \arcsin\frac{x}{a} + C.
+\]
+\[
+  \int \frac{dx}{\sqrt{x^2 \pm a^2}}
+    = \ln\left|x + \sqrt{x^2 \pm a^2}\right| + C.
+\]
+\[
+  \int \frac{x\,dx}{\sqrt{a^2 \pm x^2}}
+    = \pm\sqrt{a^2 \pm x^2} + C.
+\]
+
+% Keep combinatorics together in the second column.
+\newpage
+\subsection{Комбинаторика}
+Размещения:
+\begin{itemize}
+  \item Без повторений: $A_n^k = \dfrac{n!}{(n - k)!}$.
+  \item С повторениями: $\overline{A}_n^k = n^k$.
+\end{itemize}
+Сочетания:
+\begin{itemize}
+  \item Без повторений: $C_n^k = \dfrac{n!}{k!(n - k)!}$.
+  \item С повторениями: $\overline{C}_n^k = \dfrac{(n + k - 1)!}{k!(n - 1)!}$.
+\end{itemize}
+Перестановки:
+\begin{itemize}
+  \item Без повторений: $P_n = n!$.
+  \item С повторениями:
+    \[
+      P_n(n_1, n_2, \dots, n_k) = \frac{n!}{n_1!n_2!\dots n_k!}.
+    \]
+\end{itemize}
+\[
+  \begin{aligned}
+    C_n^k &= C_{n - 1}^k + C_{n - 1}^{k - 1}, \\
+    C_n^k &= C_n^{n - k}.
+  \end{aligned}
+\]
+
+\subsubsection*{Stars and bars}
+Количество способов представить число $n$ в виде суммы $k$ неотрицательных слагаемых:
+\[
+  C_{n + k - 1}^{k - 1}.
+\]
+Количество способов представить число $n$ в виде суммы $k$ положительных слагаемых:
+\[
+  C_{n - 1}^{k - 1}.
+\]
+\endgroup

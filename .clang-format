@@ -9,7 +9,8 @@ AlignOperands: DontAlign
 BreakBeforeBinaryOperators: NonAssignment
 TabWidth: 4
 UseTab: Never
-ColumnLimit: 100
+# Match a 9 pt listing in an A4 column.
+ColumnLimit: 50
 LineEnding: LF
 InsertNewlineAtEOF: true
 
