@@ -1,62 +1,47 @@
-int n;
-vector<int> g[N];
-int p[N], siz[N], d[N], nxt[N];
-int tin[N], T;
-void dfs_sz(int v) {
-	if (p[v] != -1) {
-		auto it = find(g[v].begin(), g[v].end(), p[v]);
-		if (it != g[v].end())
-			g[v].erase(it);
-	}
-	siz[v] = 1;
-	for (int &u : g[v]) {
-		p[u] = v;
-		d[u] = d[v] + 1;
-		dfs_sz(u);
-		siz[v] += siz[u];
-		if (siz[u] > siz[g[v][0]])
-			swap(u, g[v][0]);
-	}
+vector<int> g[N]; // список смежности
+vector<int> c[N]; // список детей
+int siz[N]; // размеры поддеревьев
+int p[N]; // родитель вершины
+vector<int> order; // порядок вершин
+int pos[N]; // позиция вершины в порядке
+int path[N]; // путь, которому принадлежит вершина
+int start[N]; // начало каждого пути
+int n, depth[N]; // глубины вершин
+void dfs1(int x, int par = -1) {
+    p[x] = par; siz[x] = 1;
+    if (par != -1) depth[x] = depth[par] + 1;
+    for (auto y : g[x]) if (y != par) {
+        c[x].push_back(y);
+        dfs1(y, x); siz[x] += siz[y];
+    }
+    int max_child = 0;
+    for (int i = 1; i < c[x].size(); i++)
+        if (siz[c[x][i]] > siz[c[x][max_child]])
+            max_child = i;
+    if (!c[x].empty()) swap(c[x][0], c[x][max_child]);
 }
-void dfs_hld(int v) {
-	tin[v] = T++;
-	for (int u : g[v]) {
-		nxt[u] = (u == g[v][0] ? nxt[v] : u);
-		dfs_hld(u);
-	}
+void dfs2(int x, int& cur_path, bool is_start) {
+    if (is_start) start[cur_path] = x;
+    path[x] = cur_path; pos[x] = order.size();
+    order.push_back(x);
+    if (!c[x].empty()) dfs2(c[x][0], cur_path, false);
+    for (int i = 1; i < c[x].size(); i++)
+        dfs2(c[x][i], ++cur_path, true);
 }
-void update(int l, int r, int val) { } // [l; r] inclusive
-int get(int l, int r) { } // [l; r] inclusive
-void update_path(int v, int u, int val) {
-	for (; nxt[v] != nxt[u]; u = p[nxt[u]]) {
-		if (d[nxt[v]] > d[nxt[u]]) swap(v, u);
-		update(tin[nxt[u]], tin[u], val);
-	}
-	if (d[v] > d[u]) swap(v, u);
-	update(tin[v], tin[u], val);
+void build_hld() {
+    int paths = 0; dfs1(0); dfs2(0, paths, true);
+    build(0, 0, n); // строим дерево отрезков на массиве order
 }
-int get_path(int v, int u) {
-	int res;
-	for (; nxt[v] != nxt[u]; u = p[nxt[u]]) {
-		if (d[nxt[v]] > d[nxt[u]]) swap(v, u);
-		// update res with the result of get()
-		get(tin[nxt[u]], tin[u]);
-	}
-	if (d[v] > d[u]) swap(v, u);
-	get(tin[v], tin[u]);
-	return res;
-}
-void update_subtree(int v, int val) {
-	update(tin[v], tin[v] + siz[v] - 1, val);
-}
-int get_subtree(int v) {
-	return get(tin[v], tin[v] + siz[v] - 1);
-}
-void init_hld(int root = 0) {
-	d[root] = 0;
-	nxt[root] = root;
-	p[root] = -1;
-	T = 0;
-	dfs_sz(root);
-	dfs_hld(root);
+void upd(int v, int x) { upd(0, 0, n, pos[v], x); }
+int get_max(int x, int y) {
+    int ans = -1e9;
+    while (path[x] != path[y]) {
+        if (pos[x] > pos[y]) swap(x, y);
+        int z = start[path[y]];
+        ans = max(ans, get(0, 0, n, pos[z], pos[y] + 1));
+        y = p[z];
+    }
+    if (depth[x] < depth[y]) swap(x, y);
+    // если надо исключить LCA, вместо pos[y] исп. pos[y]+1
+    return max(ans, get(0, 0, n, pos[y], pos[x] + 1));
 }
