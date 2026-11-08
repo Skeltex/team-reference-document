@@ -18,6 +18,7 @@
 #include <fstream>
 #include <cassert>
 #include <chrono>
+#include <complex>
 
 using namespace std;
 mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
