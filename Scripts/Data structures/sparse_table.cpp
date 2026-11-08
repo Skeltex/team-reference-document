@@ -17,6 +17,24 @@ struct SparseTable {
         }
     }
 
+    // O(log n) amortized
+    void push_back(int x) {
+        ++n;
+        lg = __lg(n) + 1;
+        T.resize(lg);
+        T[0].push_back(x);
+
+        for (int i = 1; i < lg; ++i)
+            T[i].push_back(min(T[i - 1][n - (1 << i)], T[i - 1].back()));
+    }
+    void pop_back() { // O(log n)
+        --n;
+        for (int i = 0; i < lg; ++i)
+            T[i].pop_back();
+        if (T.back().empty()) T.pop_back();
+        lg = sz(T);
+    }
+
     int query(int l, int r) const {
         ++r;
         int len = __lg(r - l);
