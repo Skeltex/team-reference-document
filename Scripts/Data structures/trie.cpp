@@ -16,7 +16,6 @@ trie new_node() {
     nodes[T].cntEnd = 0;
     return &nodes[T++];
 }
-
 void add_string(trie r, const string& s, int val = 1) {
     for (char _c : s) {
         int c = _c - 'a';
@@ -27,7 +26,6 @@ void add_string(trie r, const string& s, int val = 1) {
     r->cntEnd += val;
     r->cnt += val;
 }
-
 trie find(trie r, const string& s) {
     for (char _c : s) {
         int c = _c - 'a';
@@ -36,12 +34,10 @@ trie find(trie r, const string& s) {
     }
     return r;
 }
-
 int get_cnt(trie r, const string& s) {
     trie result = find(r, s);
     return (result == nullptr ? 0 : result->cnt);
 }
-
 int get_cntEnd(trie r, const string& s) {
     trie result = find(r, s);
     return (result == nullptr ? 0 : result->cntEnd);

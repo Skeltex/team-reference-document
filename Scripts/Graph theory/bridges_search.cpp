@@ -19,7 +19,6 @@ void dfs(int v, int p = -1) {
         } else up[v] = min(up[v], d[u]);
     }
 }
-
 void solve() {
     // Ввод графа
     used.assign(n, false);

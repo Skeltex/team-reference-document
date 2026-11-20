@@ -16,7 +16,6 @@ struct SparseTable {
                 T[i][j] = min(T[i - 1][j], T[i - 1][j + (len >> 1)]);
         }
     }
-
     // O(log n) amortized
     void push_back(int x) {
         ++n;
@@ -34,17 +33,14 @@ struct SparseTable {
         if (T.back().empty()) T.pop_back();
         lg = sz(T);
     }
-
     int query(int l, int r) const {
         ++r;
         int len = __lg(r - l);
         return min(T[len][l], T[len][r - (1 << len)]);
     }
-
     SparseTable(const vi& a) {
         build(a);
     }
-
     SparseTable(int n) : n(n) {
         vi a(n, 0LL);
         build(a);

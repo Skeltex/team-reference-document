@@ -5,7 +5,6 @@ int cnk(int n, int k) {
     if (k < 0 || n < k || n < 0) return 0LL;
     return mul(fact[n], mul(rfact[k], rfact[n - k]));
 }
-
 void calc() {
     fact[0] = 1;
     for (int i = 1; i < N; ++i)

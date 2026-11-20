@@ -10,7 +10,6 @@ void build(int n, int k) {
         tree[i] = tree[2 * i] + tree[2 * i + 1];
     }
 }
-
 void update(int pos, int val, int k) {
     pos += (1ll << k);
     tree[pos] = val;
@@ -20,7 +19,6 @@ void update(int pos, int val, int k) {
         pos >>= 1ll;
     }
 }
-
 int get(int l, int r, int k) {
     l += (1ll << k);
     r += (1ll << k);
@@ -33,4 +31,3 @@ int get(int l, int r, int k) {
     }
     return res;
 }
-

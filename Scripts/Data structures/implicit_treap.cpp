@@ -37,7 +37,6 @@ struct Treap {
         if (t->r) t->r->rev ^= 1;
         t->rev = false;
     }
-
     // a: первые k элементов, b: остальные.
     void split(Node* t, int k, Node*& a, Node*& b) {
         if (!t) {
@@ -69,7 +68,6 @@ struct Treap {
         pull(b);
         return b;
     }
-
     // Вставка перед pos; pos = size(): в конец.
     void insert(int pos, int val) {
         Node *a, *b;
@@ -102,7 +100,6 @@ struct Treap {
         delete root;
         root = nullptr;
     }
-
     Treap() = default;
     // Построение: ожидаемо O(n log n).
     Treap(const vi& a) {

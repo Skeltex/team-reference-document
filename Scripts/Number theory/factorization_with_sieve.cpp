@@ -10,7 +10,6 @@ for (li i = 2; i * i <= n; ++i) {
         }
     }
 }
-
 auto fact = [&](int x) {
     vector<pair<li, li>> f;
     while (x > 1) {

@@ -11,18 +11,8 @@
 \cppfile{Scripts/min_template.cpp}
 
 \section{Базовые алгоритмы}
-\subsection{Поиск двух максимумов}
-\cppfile{Scripts/Basic algorithms/find_two_max.cpp}
-\subsection{Поиск суммы на отрезке}
-\cppfile{Scripts/Basic algorithms/segment_sum.cpp}
-\subsection{Операция прибавления к отрезку}
-\cppfile{Scripts/Basic algorithms/add_to_segment.cpp}
-\subsection{Бинарный поиск}
-\cppfile{Scripts/Basic algorithms/binary_search.cpp}
-\subsection{Поиск первой 1 в неубывающей булевой функции}
+\subsection{Бинарный поиск (первая 1 в булевой функции)}
 \cppfile{Scripts/Basic algorithms/find_first_true.cpp}
-\subsection{Поиск последнего 0 в неубывающей булевой функции}
-\cppfile{Scripts/Basic algorithms/find_last_false.cpp}
 \subsection{Поиск экстремума функции целого аргумента}
 \cppfile{Scripts/Basic algorithms/ternary_search.cpp}
 \subsection{Поиск экстремума функции вещественного аргумента}
@@ -35,12 +25,14 @@
 \section{Теория чисел}
 \subsection{Расширенный алгоритм Евклида}
 \cppfile{Scripts/Number theory/egcd.cpp}
-\subsection{Факторизация}
-\cppfile{Scripts/Number theory/factorization.cpp}
 \subsection{Решето Эратосфена}
 \cppfile{Scripts/Number theory/sieve_of_erat.cpp}
 \subsection{Факторизация с использованием решета Эратосфена}
 \cppfile{Scripts/Number theory/factorization_with_sieve.cpp}
+\subsection{Миллер--Рабин и факторизация Полларда-ро}
+\cppfile{Scripts/Number theory/miller_rabin_pollard.cpp}
+\subsection{Линейное решето и функция Мёбиуса}
+\cppfile{Scripts/Number theory/mobius.cpp}
 \subsection{Получение делителей из факторизации}
 \cppfile{Scripts/Number theory/get_divs_from_factorization.cpp}
 \subsection{Получение делителей с помощью гармонического ряда}
@@ -49,18 +41,14 @@
 \cppfile{Scripts/Number theory/euler_phi.cpp}
 \subsection{FFT и умножение многочленов}
 \cppfile{Scripts/Number theory/fft.cpp}
+\subsection{NTT и умножение многочленов по модулю}
+\cppfile{Scripts/Number theory/ntt.cpp}
 
 \section{Комбинаторика}
 \subsection{Массив обратных факториалов}
 \cppfile{Scripts/Combinatorics/inverse_factorials.cpp}
-\subsection{Перебор перестановок длины $n$}
-\cppfile{Scripts/Combinatorics/brute_permutations.cpp}
 
 \section{Теория графов}
-\subsection{DFS}
-\cppfile{Scripts/Graph theory/dfs.cpp}
-\subsection{BFS}
-\cppfile{Scripts/Graph theory/bfs.cpp}
 \subsection{Топологическая сортировка в ацикличном графе}
 \cppfile{Scripts/Graph theory/top_sort.cpp}
 \subsection{Поиск мостов}
@@ -69,38 +57,28 @@
 \cppfile{Scripts/Graph theory/cutpoints_search.cpp}
 \subsection{Подсчёт циклов длины 3}
 \cppfile{Scripts/Graph theory/triangles.cpp}
-\subsection{Алгоритм Дейкстры за $O(m\log{n})$}
-\cppfile{Scripts/Graph theory/dijkstra.cpp}
-\subsection{Алгоритм Дейкстры за $O(n^2 + m)$}
+\subsection{Алгоритм Дейкстры за $O(n^2 + m)$ (плотные графы)}
 \cppfile{Scripts/Graph theory/dijkstra2.cpp}
-\subsection{Алгоритм Беллмана-Форда $O(n \cdot m)$}
+\subsection{Алгоритм Беллмана--Форда $O(n \cdot m)$}
 \cppfile{Scripts/Graph theory/bellman_ford.cpp}
-\subsection{Алгоритм Флойда–Уоршелла}
+\subsection{Алгоритм Флойда--Уоршелла}
 \cppfile{Scripts/Graph theory/floyd_warshall.cpp}
 \subsection{Алгоритм Диница (max flow)}
 \cppfile{Scripts/Graph theory/dinic.cpp}
+\subsection{Min-Cost Max-Flow}
+\cppfile{Scripts/Graph theory/mcmf.cpp}
 \subsection{Венгерский алгоритм (задача о назначениях)}
 \cppfile{Scripts/Graph theory/hungarian.cpp}
 
 \section{Динамика}
-\subsection{Поиск НВП динамикой вперёд}
-\cppfile{Scripts/Dynamics/nvp_forward.cpp}
-\subsection{Поиск НВП динамикой назад}
-\cppfile{Scripts/Dynamics/nvp_back.cpp}
-\subsection{Поиск НВП ленивой динамикой}
-\cppfile{Scripts/Dynamics/nvp_lazy.cpp}
-\subsection{Поиск НВП + восстановление сертификата}
-\cppfile{Scripts/Dynamics/nvp_certificate_recovery.cpp}
-\subsection{Поиск НВП за $O(n \cdot \max(a))$}
-\cppfile{Scripts/Dynamics/nvp_fast.cpp}
-\subsection{Поиск НВП за $O(n\log{n})$}
+\subsection{Поиск НВП за $O(n\log{n})$ и сертификат}
 \cppfile{Scripts/Dynamics/nvp_main.cpp}
-\subsection{Поиск НОП}
-\cppfile{Scripts/Dynamics/nop.cpp}
-\subsection{Рюкзак}
+\subsection{Рюкзак (достижимость и сертификат)}
 \cppfile{Scripts/Dynamics/knapsack.cpp}
-\subsection{Рюкзак со стоимостями}
+\subsection{Рюкзак со стоимостями (2 слоя и сертификат)}
 \cppfile{Scripts/Dynamics/knapsack_with_prices.cpp}
+\subsection{SOS DP (сумма по подмаскам и надмаскам)}
+\cppfile{Scripts/Dynamics/sos_dp.cpp}
 \subsection{Разделяй и властвуй оптимизация}
 \cppfile{Scripts/Dynamics/dnc_dp.cpp}
 \subsection{Оптимизация Кнута}
@@ -117,12 +95,14 @@
 \cppfile{Scripts/String algorithms/single_hash.cpp}
 \subsection{Двойной полиномиальный хэш}
 \cppfile{Scripts/String algorithms/double_hash.cpp}
+\subsection{Суффиксный массив и LCP}
+\cppfile{Scripts/String algorithms/suffix_array.cpp}
 \subsection{Суффиксный автомат}
 \cppfile{Scripts/String algorithms/suffix_automaton.cpp}
 
 \section{Структуры данных}
-\subsubsection{HLD}
-\inputminted[breaklines]{cpp}{Scripts/Data structures/hld.cpp}
+\subsection{HLD}
+\cppfile{Scripts/Data structures/hld.cpp}
 \subsection{DSU}
 \cppfile{Scripts/Data structures/dsu.cpp}
 \subsection{Бор}
@@ -147,13 +127,11 @@
 \cppfile{Scripts/Data structures/lichao_tree_min.cpp}
 \subsection{LineContainer}
 \cppfile{Scripts/Data structures/line_container.cpp}
-\subsection{Массив с вставкой в позицию за $O(\sqrt{n})$}
-\cppfile{Scripts/Data structures/sqrt_insert.cpp}
 \subsection{Декартово дерево по неявному ключу}
 \cppfile{Scripts/Data structures/implicit_treap.cpp}
 \subsection{Sparse table}
 \cppfile{Scripts/Data structures/sparse_table.cpp}
-\subsection{PBDS}
+\subsection{PBDS (\texttt{gp\_hash\_table} и \texttt{custom\_hash})}
 \cppfile{Scripts/Data structures/pbds.cpp}
 
 \section{Геометрия}

@@ -8,7 +8,6 @@ void update(int pos, int x, int lx, int rx) {
     else update(pos, 2 * x + 2, mid, rx);
     treet[x] = treet[2 * x + 1] + treet[2 * x + 2];
 }
-
 int get(int cnt, int x, int lx, int rx) {
     if (rx - lx == 1) return lx;
     int mid = (lx + rx) / 2;

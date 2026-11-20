@@ -6,18 +6,15 @@ struct func {
     }
     func(int k = 0, int b = 0) : k(k), b(b) {}
 };
-
 struct line {
     func f;
     ld l;
 
     line(func f, ld l = 0.0L) : f(f), l(l) {}
 };
-
 ld getX(const func& f1, const func& f2) {
     return ld(f2.b - f1.b) / (f1.k - f2.k);
 }
-
 struct LineContainer {
     deque<line> d;
 
@@ -35,7 +32,6 @@ struct LineContainer {
         ld newX = (d.empty() ? -INF : getX(f, d.back().f));
         d.push_back(line(f, newX));
     }
-
     // Вызываем, если по неубыванию k
     void addLeft(const func& f) {
         if (!d.empty() && d.front().f.k == f.k) {
@@ -54,7 +50,6 @@ struct LineContainer {
         }
         d.push_front(line(f, -INF));
     }
-
     int getMin(int x) {
         if (d.empty()) return INF;
         int res = 0;
@@ -68,7 +63,6 @@ struct LineContainer {
         }
         return d[res].f.eval(x);
     }
-
     int getMin1(int x) {
         // x подаются в порядке неубывания
         if (d.empty()) return INF;
@@ -78,7 +72,6 @@ struct LineContainer {
         }
         return d.front().f.eval(x);
     }
-
     int getMin2(int x) {
         // x подаются в порядке невозрастания
         if (d.empty()) return INF;
@@ -86,10 +79,8 @@ struct LineContainer {
             d.pop_back();
         return d.back().f.eval(x);
     }
-
     LineContainer() {}
 };
-
 void solve() {
     int n;
     cin >> n;

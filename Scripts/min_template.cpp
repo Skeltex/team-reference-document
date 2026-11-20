@@ -19,10 +19,9 @@
 #include <cassert>
 #include <chrono>
 #include <complex>
-
 using namespace std;
-mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
-
+mt19937_64 rnd(
+    chrono::steady_clock::now().time_since_epoch().count());
 #ifdef _DEBUG
 #define see(x) cerr << (#x) << " = " << (x) << '\n'
 #else
@@ -36,41 +35,31 @@ mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
 #define all(a) (a).begin(), (a).end()
 #define rall(a) (a).rbegin(), (a).rend()
 #define int long long
-
 typedef long long li;
 typedef long double ld;
-
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef vector<char> vc;
 typedef vector<li> vli;
 typedef vector<vli> vvli;
 typedef vector<ld> vld;
-
 const li MOD = 998'244'353;
 const li INF = li(2e18) + 13LL;
-const ld EPS = 1e-9L;
-const ld PI = acosl(-1.0L);
-const char nl = '\n';
-
 template <typename T>
 istream& operator>>(istream& in, vector<T>& v) {
     for (auto& x : v)
         in >> x;
     return in;
 }
-
 template <typename T>
 ostream& operator<<(ostream& out, const vector<T>& v) {
     for (auto& x : v)
         out << x << ' ';
     return out;
 }
-
 bool is_pow2(li x) {
     return x && (x & -x) == x;
 }
-
 string dec_to_bin(li x) {
     if (!x) return "0";
     string s;
@@ -81,7 +70,6 @@ string dec_to_bin(li x) {
     reverse(all(s));
     return s;
 }
-
 li bin_to_dec(const string& s) {
     li x = 0;
     int n = sz(s);
@@ -89,21 +77,14 @@ li bin_to_dec(const string& s) {
         x += (s[i] - '0') * (1LL << (n - 1 - i));
     return x;
 }
-
 li add(li a, li b) {
     a = (a + b) % MOD;
     return a >= 0 ? a : a + MOD;
 }
-
-li sub(li a, li b) {
-    return add(a, -b);
-}
-
 li mul(li a, li b) {
     li res = a % MOD * (b % MOD) % MOD;
     return res >= 0 ? res : res + MOD;
 }
-
 li binpow(li a, li b) {
     a = add(a, 0);
     li res = 1;
@@ -114,11 +95,9 @@ li binpow(li a, li b) {
     }
     return res;
 }
-
 li inv(li x) {
     return binpow(x, MOD - 2);
 }
-
 template <typename T>
 li gcd(const vector<T>& a) {
     li gcd1 = 0;
@@ -126,7 +105,6 @@ li gcd(const vector<T>& a) {
         gcd1 = gcd(gcd1, x);
     return gcd1;
 }
-
 template <typename T>
 li lcm(const vector<T>& a) {
     li lcm1 = 1;
@@ -134,7 +112,6 @@ li lcm(const vector<T>& a) {
         lcm1 = lcm(lcm1, x);
     return lcm1;
 }
-
 template <typename T>
 vi zip(const vector<T>& a) {
     vector<T> c = a;
@@ -145,25 +122,14 @@ vi zip(const vector<T>& a) {
         b.push_back(lower_bound(all(c), x) - c.begin());
     return b;
 }
-
 string low(const string& s) {
     string s1 = s;
     for (char& c : s1)
         c = tolower(c);
     return s1;
 }
-
-string up(const string& s) {
-    string s1 = s;
-    for (char& c : s1)
-        c = toupper(c);
-    return s1;
-}
-
 //#define MULTITEST
-
 void solve() {}
-
 signed main() {
 #ifdef _DEBUG
     (void)freopen("input.txt", "r", stdin);
@@ -175,7 +141,6 @@ signed main() {
     cerr.precision(16);
     cout << fixed;
     cerr << fixed;
-
     int tc = 1;
 #ifdef MULTITEST
     cin >> tc;

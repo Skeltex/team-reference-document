@@ -6,7 +6,6 @@ struct func {
     }
     func(int k = 0, int b = 0) : k(k), b(b) {}
 };
-
 struct LiChaoTreeMin {
     vector<func> t;
     int n;
@@ -16,7 +15,6 @@ struct LiChaoTreeMin {
         t.resize(4 * n, func(0, INF));
         // -INF для дерева на max
     }
-
     int get(int v, int l, int r, int pos) {
         int ans = t[v].eval(pos);
         if (l < r - 1) {
@@ -26,7 +24,6 @@ struct LiChaoTreeMin {
         }
         return ans;
     }
-
     void add(int v, int l, int r, func& f) {
         int m = (l + r) / 2;
         if (t[v].eval(m) > f.eval(m)) // < для дерева на max
@@ -36,17 +33,14 @@ struct LiChaoTreeMin {
             add(v * 2 + 1, l, m, f);
         else add(v * 2 + 2, m, r, f);
     }
-
     int getMin(int x) {
         return get(0, 0, n, x);
     }
-
     void add(func f) {
         func f2 = f;
         add(0, 0, n, f2);
     }
 };
-
 void solve() {
     LiChaoTreeMin t(10);
     t.add(func(3, 2));

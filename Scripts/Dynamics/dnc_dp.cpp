@@ -18,7 +18,6 @@ void calc(int l, int r) {
     while (lg < l)
         sm -= --cnt[a[lg++]];
 }
-
 void rec(int l, int r, int opt_l, int opt_r, int j) {
     if (l > r) return;
     int mid = (l + r) / 2;
@@ -33,7 +32,6 @@ void rec(int l, int r, int opt_l, int opt_r, int j) {
     rec(l, mid - 1, opt_l, opt, j);
     rec(mid + 1, r, opt, opt_r, j);
 }
-
 void solve() {
     cin >> n >> k;
     fill(cnt, cnt + 100'013, 0);

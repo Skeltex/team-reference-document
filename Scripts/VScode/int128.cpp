@@ -9,7 +9,6 @@ istream& operator>>(istream& in, __int128& a) {
     if (s[0] == '-') a *= -1;
     return in;
 }
-
 ostream& operator<<(ostream& out, __int128 a) {
     __int128 b = a;
     if (b < 0) out << '-', b *= -1;

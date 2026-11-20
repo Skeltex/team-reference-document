@@ -14,15 +14,12 @@ int orientation(const vec2d& a, const vec2d& b, const vec2d& c) {
         return 1; // Против часовой стрелки.
     return 0;
 }
-
 bool cw(const vec2d& a, const vec2d& b, const vec2d& c) {
     return orientation(a, b, c) < 0;
 }
-
 bool ccw(const vec2d& a, const vec2d& b, const vec2d& c) {
     return orientation(a, b, c) > 0;
 }
-
 void convex_hull(vector<vec2d>& a) {
     if (a.size() <= 1)
         return;
@@ -53,7 +50,6 @@ void convex_hull(vector<vec2d>& a) {
             down.push_back(a[i]);
         }
     }
-
     a.clear();
     for (const vec2d& point : down)
         a.push_back(point);

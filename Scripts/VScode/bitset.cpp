@@ -30,7 +30,7 @@ void solve() {
         curs -= a[cur - 1];
         cur = pr[curs];
     }
-    cout << sz(ans) << nl;
+    cout << sz(ans) << '\n';
     for (int i = sz(ans) - 1; i >= 0; --i)
         cout << ans[i] << ' ';
 }

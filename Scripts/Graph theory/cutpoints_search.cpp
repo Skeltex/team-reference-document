@@ -21,7 +21,6 @@ void dfs(int v, int p = -1) {
     if (p == -1 && cnt > 1) is_cutpoint = true;
     if (is_cutpoint) cout << v + 1 << '\n';
 }
-
 void solve() {
     // Ввод графа
     used.assign(n, false);

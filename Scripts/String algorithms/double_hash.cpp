@@ -9,7 +9,6 @@ void precalc() {
         for (int i = 1; i < N; ++i)
             p[k][i] = (p[k][i - 1] * 1LL * B[k]) % M[k];
 }
-
 li create_hash(const string& s) {
     int hs[2] = {0, 0};
     for (char c : s)
@@ -17,7 +16,6 @@ li create_hash(const string& s) {
             hs[k] = (hs[k] * 1LL * B[k] + c + 1) % M[k];
     return (1LL * hs[0] << 32) | hs[1];
 }
-
 struct DoubleHash {
     vector<int> h[2];
 
@@ -29,7 +27,6 @@ struct DoubleHash {
             for (int i = 0; i < sz(s); ++i)
                 h[k][i + 1] = (h[k][i] * 1LL * B[k] + s[i] + 1) % M[k];
     }
-
     li get(int l, int r) const {
         li res = 0;
         for (int k : {0, 1}) {

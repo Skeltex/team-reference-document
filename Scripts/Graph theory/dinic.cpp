@@ -2,7 +2,6 @@ struct edge {
     int v, f, c;
     edge(int a, int b) : v(a), f(0), c(b) {}
 };
-
 struct network {
     int n, s, t;
     vvi g;
@@ -15,18 +14,15 @@ struct network {
         t = c;
         g.resize(n);
     }
-
     void add(int u, int v, int c) {
         edges.push_back(edge(v, c));
         edges.push_back(edge(u, 0));
         g[u].push_back(sz(edges) - 2);
         g[v].push_back(sz(edges) - 1);
     }
-
     int dif(int i) {
         return edges[i].c - edges[i].f;
     }
-
     bool bfs(int m) {
         d = vi(n, INF);
         d[s] = 0;
@@ -45,7 +41,6 @@ struct network {
         }
         return d[t] != INF;
     }
-
     int dfs(int x, int mx, int m) {
         if (x == t || mx == 0) return mx;
         int sm = 0;
@@ -61,7 +56,6 @@ struct network {
         }
         return sm;
     }
-
     int maxflow() {
         int flow = 0, m = (1LL << 30);
         while (m > 0) {

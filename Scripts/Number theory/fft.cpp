@@ -8,13 +8,12 @@ void fft(vector<cd>& a, bool inv = false) {
     static vector<cd> w = {1, 1};
     for (int len = sz(w); len < n; len <<= 1) {
         w.resize(len << 1);
-        ld ang = PI / len;
+        ld ang = acosl(-1.0L) / len;
         cd step(cosl(ang), sinl(ang));
         for (int i = len; i < (len << 1); ++i)
             w[i] = (i & 1) ? w[i >> 1] * step
                            : w[i >> 1];
     }
-
     for (int i = 1, j = 0; i < n; ++i) {
         int bit = n >> 1;
         while (j & bit) {
@@ -24,7 +23,6 @@ void fft(vector<cd>& a, bool inv = false) {
         j ^= bit;
         if (i < j) swap(a[i], a[j]);
     }
-
     for (int len = 1; len < n; len <<= 1) {
         for (int pos = 0; pos < n; pos += len << 1) {
             for (int i = 0; i < len; ++i) {
@@ -41,7 +39,6 @@ void fft(vector<cd>& a, bool inv = false) {
             x /= n;
     }
 }
-
 // a[i], b[i]: коэффициенты при x^i.
 // O(N log N), где N = sz(a) + sz(b) - 1.
 // Большие коэффициенты могут дать ошибку

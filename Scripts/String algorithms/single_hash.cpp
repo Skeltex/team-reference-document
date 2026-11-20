@@ -6,14 +6,12 @@ void precalc() {
     for (int i = 1; i < N; ++i)
         p[i] = (p[i - 1] * 1LL * base) % HASH_MOD;
 }
-
 int create_hash(const string& s) {
     int hs = 0;
     for (char c : s)
         hs = (hs * 1LL * base + c + 1) % HASH_MOD;
     return hs;
 }
-
 struct SingleHash {
     vector<int> h;
 
@@ -22,7 +20,6 @@ struct SingleHash {
         for (int i = 0; i < sz(s); ++i)
             h[i + 1] = (h[i] * 1LL * base + s[i] + 1) % HASH_MOD;
     }
-
     int get(int l, int r) const {
         return (h[r + 1] - h[l] * 1LL * p[r - l + 1] % HASH_MOD + HASH_MOD) % HASH_MOD;
     }

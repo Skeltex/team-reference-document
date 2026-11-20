@@ -8,7 +8,6 @@ void dfs(int v) {
         if (!used[u]) dfs(u);
     ord.push_back(v);
 }
-
 void solve() {
     // Ввод графа
     for (int i = 0; i < n; ++i)

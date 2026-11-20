@@ -1,3 +1,5 @@
+// Первый true на [l, r] (или r + 1).
+// Последний false: find_first_true(l, r) - 1.
 li find_first_true(li l, li r) {
     li res = r + 1, m;
     while (l <= r) {

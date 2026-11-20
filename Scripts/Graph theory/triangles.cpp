@@ -7,7 +7,6 @@ int count_triangles(const vvi& g) {
             if (sz(g[v]) < sz(g[u]) || (sz(g[v]) == sz(g[u]) && v < u)) to[v].push_back(u);
         }
     }
-
     vector<char> used(n);
     int ans = 0;
     for (int v = 0; v < n; ++v) {

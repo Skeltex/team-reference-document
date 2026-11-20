@@ -41,7 +41,6 @@ struct SuffixAutomaton {
         }
         last = cur;
     }
-
     // Состояние подстроки s или -1. O(|s| log A).
     int find(const string& s) const {
         int v = 0;
@@ -52,7 +51,6 @@ struct SuffixAutomaton {
         }
         return v;
     }
-
     // Число различных непустых подстрок. O(n).
     li distinct_substrings() const {
         li ans = 0;
@@ -60,7 +58,6 @@ struct SuffixAutomaton {
             ans += st[v].len - st[st[v].link].len;
         return ans;
     }
-
     // Число вхождений для каждого состояния.
     // O(n). После extend пересчитать заново.
     // Для непустого s: v = find(s), ответ cnt[v]
@@ -85,7 +82,6 @@ struct SuffixAutomaton {
         ++cnt[0];
         return cnt;
     }
-
     SuffixAutomaton(const string& s = "") : st(1) {
         st.reserve(2 * sz(s) + 1);
         for (char c : s)

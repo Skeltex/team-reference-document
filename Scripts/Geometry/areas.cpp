@@ -6,7 +6,6 @@
 long long doubledTriangleArea(const vec2d& A, const vec2d& B, const vec2d& C) {
     return abs((B - A) % (C - A));
 }
-
 long long doubledPolygonArea(const vector<vec2d>& v) {
     // Промежуточная сумма может быть больше итоговой площади.
     __int128 ans = 0;

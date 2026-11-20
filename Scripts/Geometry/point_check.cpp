@@ -10,11 +10,9 @@
 bool lexComp(const vec2d& l, const vec2d& r) {
     return l.x < r.x || (l.x == r.x && l.y < r.y);
 }
-
 int sgn(long long val) {
     return (val > 0) - (val < 0);
 }
-
 vector<vec2d> seq;
 vec2d translation;
 int n;
@@ -27,7 +25,6 @@ bool pointInTriangle(const vec2d& a, const vec2d& b, const vec2d& c, const vec2d
         + abs((c - p) % (a - p));
     return s1 == s2;
 }
-
 void prepare(vector<vec2d>& points) {
     n = (int)points.size();
     int pos = 0;
@@ -43,7 +40,6 @@ void prepare(vector<vec2d>& points) {
         seq[i] = points[i + 1] - points[0];
     translation = points[0];
 }
-
 bool pointInConvexPolygon(vec2d point) {
     point = point - translation;
     if (seq[0] % point != 0 &&

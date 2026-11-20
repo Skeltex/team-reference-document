@@ -6,11 +6,9 @@ typedef pair<long double, long double> pt;
 bool operator<(const vec2d& a, const vec2d& b) {
     return make_pair(a.x, a.y) < make_pair(b.x, b.y);
 }
-
 __int128 det(long long a, long long b, long long c, long long d) {
     return (__int128)a * d - (__int128)b * c;
 }
-
 line canonical_form(const line& a) {
     long long G = gcd(abs(a.A), gcd(abs(a.B), abs(a.C)));
     line b(a.A / G, a.B / G, a.C / G);
@@ -21,18 +19,15 @@ line canonical_form(const line& a) {
     }
     return b;
 }
-
 bool parallel_lines(const line& a, const line& b) {
     return det(a.A, a.B, b.A, b.B) == 0;
 }
-
 bool equal_lines(const line& a, const line& b) {
     // Проверка пропорциональности коэффициентов через точные определители.
     return det(a.A, a.B, b.A, b.B) == 0
         && det(a.A, a.C, b.A, b.C) == 0
         && det(a.B, a.C, b.B, b.C) == 0;
 }
-
 int intersect_lines(const line& a, const line& b, long double& x, long double& y) {
     // 1: единственная точка пересечения записана в (x, y).
     // 0: прямые параллельны и различны.
@@ -46,7 +41,6 @@ int intersect_lines(const line& a, const line& b, long double& x, long double& y
     y = (long double)det(a.A, -a.C, b.A, -b.C) / (long double)d;
     return 1;
 }
-
 bool bounding_box_check(long long a, long long b, long long c, long long d) {
     if (a > b)
         swap(a, b);
@@ -54,7 +48,6 @@ bool bounding_box_check(long long a, long long b, long long c, long long d) {
         swap(c, d);
     return max(a, c) <= min(b, d);
 }
-
 // Только для невырожденных отрезков: a != b и c != d.
 // Если пересечение --- точка, она записывается и в ans1, и в ans2.
 // Если пересечение --- отрезок, его концы записываются в ans1 и ans2
@@ -86,7 +79,6 @@ bool intersect_segments(const vec2d& a, const vec2d& b, const vec2d& c, const ve
         ans2 = pt(right.x, right.y);
         return true;
     }
-
     intersect_lines(l1, l2, ans1.x, ans1.y);
     ans2 = ans1;
     return true;
