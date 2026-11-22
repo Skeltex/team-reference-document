@@ -1,5 +1,6 @@
 \documentclass[a4paper,10pt,twocolumn,oneside]{article}
 \usepackage{preamble}
+\setminted{baselinestretch=0.95}
 
 \begin{document}
 \pagestyle{fancy}
@@ -57,6 +58,8 @@
 \cppfile{Scripts/Graph theory/cutpoints_search.cpp}
 \subsection{Подсчёт циклов длины 3}
 \cppfile{Scripts/Graph theory/triangles.cpp}
+\subsection{Алгоритм Дейкстры за $O(m\log{n})$}
+\cppfile{Scripts/Graph theory/dijkstra.cpp}
 \subsection{Алгоритм Дейкстры за $O(n^2 + m)$ (плотные графы)}
 \cppfile{Scripts/Graph theory/dijkstra2.cpp}
 \subsection{Алгоритм Беллмана--Форда $O(n \cdot m)$}
@@ -127,11 +130,13 @@
 \cppfile{Scripts/Data structures/lichao_tree_min.cpp}
 \subsection{LineContainer}
 \cppfile{Scripts/Data structures/line_container.cpp}
+\subsection{Массив с вставкой в позицию за $O(\sqrt{n})$}
+\cppfile{Scripts/Data structures/sqrt_insert.cpp}
 \subsection{Декартово дерево по неявному ключу}
 \cppfile{Scripts/Data structures/implicit_treap.cpp}
 \subsection{Sparse table}
 \cppfile{Scripts/Data structures/sparse_table.cpp}
-\subsection{PBDS (\texttt{gp\_hash\_table} и \texttt{custom\_hash})}
+\subsection{PBDS}
 \cppfile{Scripts/Data structures/pbds.cpp}
 
 \section{Геометрия}
