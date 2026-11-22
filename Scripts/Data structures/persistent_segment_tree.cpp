@@ -1,54 +1,68 @@
-struct TreeNode {
-    li sum;
-    int leftSon;
-    int rightSon;
-    TreeNode() : sum(0), leftSon(-1), rightSon(-1) {}
-};
-TreeNode buf[24'000'000];
-int cur = 0;
-int n;
-vector<int> roots;
+// Статический массив, отрезки [L, R] включительно.
+// get_kth даёт значение по рангу 0 <= k <= R - L.
+// count_le считает элементы <= x.
+// m — число различных значений. Построение O(n log n),
+// запросы O(log m), память O(n log m).
+struct PersSegmentTree {
+private:
+    struct Node {
+        int lc = 0, rc = 0, cnt = 0;
+    };
+    vi vals;
+    vi roots; // roots[i] хранит частоты на [0, i).
+    vector<Node> buf;
 
-int makeLeaf(int val) {
-    buf[cur].sum = val;
-    buf[cur].leftSon = buf[cur].rightSon = -1;
-    return cur++;
-}
-int makeInner(int lf, int rg) {
-    buf[cur].sum = buf[lf].sum + buf[rg].sum;
-    buf[cur].leftSon = lf;
-    buf[cur].rightSon = rg;
-    return cur++;
-}
-int build(const vector<int>& a, int l, int r) {
-    if (r - l == 1) return makeLeaf(a[l]);
-    int m = (l + r) / 2;
-    int lf = build(a, l, m);
-    int rg = build(a, m, r);
-    return makeInner(lf, rg);
-}
-void build(const vector<int>& a) {
-    n = sz(a);
-    roots.push_back(build(a, 0, n));
-}
-li get_sum(int v, int l, int r, int L, int R) {
-    if (R <= l || L >= r || L >= R) return 0;
-    if (L <= l && r <= R) return buf[v].sum;
-    int m = (l + r) / 2;
-    return get_sum(buf[v].leftSon, l, m, L, R) + get_sum(buf[v].rightSon, m, r, L, R);
-}
-li get_sum(int L, int R, int v = sz(roots) - 1) {
-    return get_sum(roots[v], 0, n, L, R + 1);
-}
-int update(int v, int l, int r, int pos, int val) {
-    if (r - l == 1) return makeLeaf(val);
-    int m = (l + r) / 2;
-    int lf = buf[v].leftSon;
-    int rg = buf[v].rightSon;
-    if (pos < m) lf = update(lf, l, m, pos, val);
-    else rg = update(rg, m, r, pos, val);
-    return makeInner(lf, rg);
-}
-void update(int pos, int val, int v = sz(roots) - 1) {
-    roots.push_back(update(roots[v], 0, n, pos, val));
-}
+    int insert(int v, int l, int r, int pos) {
+        Node cur = buf[v];
+        ++cur.cnt;
+        if (r - l > 1) {
+            int m = l + (r - l) / 2;
+            if (pos < m) cur.lc = insert(cur.lc, l, m, pos);
+            else cur.rc = insert(cur.rc, m, r, pos);
+        }
+        buf.push_back(cur);
+        return sz(buf) - 1;
+    }
+    int count_pref(int u, int v, int l, int r, int p) const {
+        if (u == v || p <= l) return 0;
+        if (r <= p) return buf[v].cnt - buf[u].cnt;
+        int m = l + (r - l) / 2;
+        return count_pref(buf[u].lc, buf[v].lc, l, m, p)
+             + count_pref(buf[u].rc, buf[v].rc, m, r, p);
+    }
+    int get_kth(int u, int v, int l, int r, int k) const {
+        if (r - l == 1) return vals[l];
+        int lu = buf[u].lc, lv = buf[v].lc;
+        int cnt = buf[lv].cnt - buf[lu].cnt;
+        int m = l + (r - l) / 2;
+        if (k < cnt) return get_kth(lu, lv, l, m, k);
+        return get_kth(buf[u].rc, buf[v].rc, m, r, k - cnt);
+    }
+
+public:
+    explicit PersSegmentTree(const vi& a = {}) { build(a); }
+
+    void build(const vi& a) {
+        vals = a;
+        sort(all(vals));
+        vals.erase(unique(all(vals)), vals.end());
+        int m = sz(vals), h = 1;
+        for (int x = m - 1; x > 0; x >>= 1) ++h;
+        buf.clear();
+        buf.reserve(1 + a.size() * h);
+        buf.emplace_back(); // узел 0 пуст во всех версиях
+        roots.assign(a.size() + 1, 0);
+        for (int i = 0; i < sz(a); ++i) {
+            int pos = lower_bound(all(vals), a[i]) - vals.begin();
+            roots[i + 1] = insert(roots[i], 0, m, pos);
+        }
+    }
+    int count_le(int L, int R, int x) const {
+        if (L > R) return 0;
+        int p = upper_bound(all(vals), x) - vals.begin();
+        return count_pref(roots[L], roots[R + 1], 0, sz(vals), p);
+    }
+    int get_kth(int L, int R, int k) const {
+        return get_kth(roots[L], roots[R + 1], 0, sz(vals), k);
+    }
+};
