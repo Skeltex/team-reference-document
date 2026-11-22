@@ -1,3 +1,4 @@
+\usepackage{anyfontsize}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}
@@ -13,7 +14,8 @@
 \usepackage{array}
 \usepackage{minted}
 \setminted{
-  fontsize=\small,
+  fontsize={\fontsize{8.5pt}{9.4pt}\selectfont},
+  listparameters={\setlength{\topsep}{2pt}\setlength{\partopsep}{0pt}},
   breaklines=true,
   breakanywhere=false,
   breakafter={()\,;\[\]\{\}},
@@ -23,7 +25,7 @@
 \newmintedfile[cppfile]{cpp}{}
 \usepackage{tempora}
 \usepackage[
-  left=2cm, right=2cm, top=2cm, bottom=2cm, headsep=0.2cm, footskip=0.6cm, bindingoffset=0cm
+  hmargin=12mm, top=15mm, bottom=12mm, headsep=2mm, columnsep=5mm
 ]{geometry}
 \usepackage[english,russian]{babel}
 \usepackage{titlesec}
