@@ -97,9 +97,18 @@
 \cppfile{Scripts/String algorithms/single_hash.cpp}
 \subsection{Двойной полиномиальный хэш}
 \cppfile{Scripts/String algorithms/double_hash.cpp}
-\subsection{Суффиксный массив и LCP}
+\subsection{Суффиксный массив (SA-IS) и LCP}
+Запросы принимают границы $[l,r]$ в исходном тексте. Для RMQ скопируйте
+также \texttt{SparseTable} (с.~\pageref{ds:sparse-table}).
+В SA и SAM индексы начинаются с нуля, вхождения учитывают пересечения.
+Пустая строка встречается во всех $n+1$ позициях.
+\texttt{longest\_at\_least(k)} и \texttt{shortest\_at\_most(k)} ищут
+непустую подстроку и возвращают пару (начало, длина) или $(-1,0)$.
 \cppfile{Scripts/String algorithms/suffix_array.cpp}
 \subsection{Суффиксный автомат}
+Запросы принимают внешний шаблон. \texttt{longest\_prefix} возвращает
+длину, \texttt{longest\_common\_substring} --- начало в шаблоне и длину.
+При отсутствии вхождений первый и последний индексы равны $-1$.
 \cppfile{Scripts/String algorithms/suffix_automaton.cpp}
 
 \section{Структуры данных}
@@ -136,6 +145,7 @@
 \subsection{Декартово дерево по неявному ключу}
 \cppfile{Scripts/Data structures/implicit_treap.cpp}
 \subsection{Sparse table}
+\label{ds:sparse-table}
 \cppfile{Scripts/Data structures/sparse_table.cpp}
 \subsection{PBDS}
 \cppfile{Scripts/Data structures/pbds.cpp}
