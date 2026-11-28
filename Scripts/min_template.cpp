@@ -23,7 +23,7 @@
 using namespace std;
 mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
 
-#ifdef _DEBUG
+#ifdef LOCAL
 #define see(x) cerr << (#x) << " = " << (x) << '\n'
 #else
 #define see(x) 42
